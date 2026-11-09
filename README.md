@@ -62,7 +62,7 @@ Open `http://127.0.0.1:8000/` for the dashboard and `/docs` for the REST schema.
 
 ## Tests
 
-Run `python scripts/run_tests.py` from an uninstalled checkout, or `python -m unittest discover -s tests -v` after installation. Five core tests passed locally; two API integration tests were skipped because FastAPI, SQLAlchemy, and httpx were unavailable in the machine environment.
+Run `python scripts/run_tests.py` from an uninstalled checkout, or `python -m unittest discover -s tests -v` after installation. Six tests passed locally; two API integration tests were skipped because FastAPI and SQLAlchemy are unavailable in the machine environment.
 
 ## Limitations and next steps
 

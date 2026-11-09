@@ -1,4 +1,7 @@
 import unittest
+from unittest.mock import patch
+from contextlib import redirect_stdout
+from io import StringIO
 import pandas as pd
 from energy_manager.core import Tariff, add_energy, analyze, synthetic_readings, validate_frame
 
@@ -17,3 +20,7 @@ class EnergyTests(unittest.TestCase):
     def test_duplicate_timestamps_rejected(self):
         x=self.frame.copy(); x.loc[1,"timestamp"]=x.loc[0,"timestamp"]
         with self.assertRaises(ValueError): validate_frame(x)
+    def test_cli_smoke(self):
+        from energy_manager.cli import main
+        with patch("sys.argv",["energy"]),redirect_stdout(StringIO()) as output: main()
+        self.assertIn("energy_kwh",output.getvalue())
